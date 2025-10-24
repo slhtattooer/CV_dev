@@ -1,0 +1,389 @@
+/* ========== BASE ========== */
+* {
+  box-sizing: border-box;
+  transition: 0.35s ease;
+}
+
+.rela-block {
+  display: block;
+  position: relative;
+  margin: auto;
+}
+
+.rela-inline {
+  display: inline-block;
+  position: relative;
+  margin: auto;
+}
+
+.floated {
+  display: inline-block;
+  position: relative;
+  float: left;
+}
+
+.abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 88%;
+}
+
+body {
+  font-family: 'Open Sans';
+  font-size: 18px;
+  letter-spacing: 0px;
+  font-weight: 400;
+  line-height: 28px;
+  background: url('http://kingofwallpapers.com/leaves/leaves-016.jpg') right no-repeat;
+  background-size: cover;
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  margin: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(255,255,255,0.92);
+}
+
+.caps { text-transform: uppercase; }
+.justified { text-align: justify; }
+p.light { color: #777; margin-bottom: 10px; }
+
+h2 {
+  font-family: 'Open Sans';
+  font-size: 30px;
+  letter-spacing: 5px;
+  font-weight: 600;
+  line-height: 40px;
+  color: black;
+}
+
+h3 {
+  font-family: 'Open Sans';
+  font-size: 21px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  line-height: 28px;
+  color: black;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* underline anim on h3 */
+h3::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: #000;
+  transition: width 0.3s ease;
+}
+h3:hover::after { width: 100%; }
+
+.page {
+  width: 90%;
+  max-width: 1200px;
+  margin: 80px auto;
+  background-color: white;
+  box-shadow: 6px 10px 28px 0px rgba(0,0,0,0.4);
+}
+
+/* ========== TOP BAR ========== */
+.top-bar {
+  height: 220px;
+  background-color: #848484;
+  color: white;
+  position: relative;    /* per il pattern */
+  overflow: hidden;      /* pulizia bordi pattern */
+}
+
+/* Griglia esagonale “vera” in SVG come data-URI */
+.top-bar::after{
+  content:"";
+  position:absolute; inset:0;
+  opacity:.18;                 /* intensità pattern */
+  background-image: url("data:image/svg+xml;utf8,\
+  <svg xmlns='http://www.w3.org/2000/svg' width='60' height='52' viewBox='0 0 60 52' fill='none'>\
+    <g stroke='white' stroke-width='1'>\
+      <polygon points='30,1 59,16 59,36 30,51 1,36 1,16'/>\
+      <polygon points='30,1 59,16 59,36 30,51 1,36 1,16' transform='translate(30,26)'/>\
+      <polygon points='30,1 59,16 59,36 30,51 1,36 1,16' transform='translate(-30,26)'/>\
+    </g>\
+  </svg>");
+  background-size: 60px 52px;
+  background-repeat: repeat;
+  mix-blend-mode: screen;
+  pointer-events:none;
+}
+
+.name {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: calc(350px + 5%);
+  height: 120px;
+  text-align: center;
+  font-family: 'Raleway';
+  font-size: 58px;
+  letter-spacing: 8px;
+  font-weight: 100;
+  line-height: 60px;
+}
+.name div { width: 94%; }
+
+/* ========== SIDEBAR ========== */
+.side-bar {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 5%;
+  width: 350px;
+  background-color: #83d8c9;
+  padding: 280px 30px 50px;
+}
+
+.mugshot {
+  position: absolute;
+  top: 50px;
+  left: 70px;
+  height: 210px;
+  width: 210px;
+}
+.mugshot .logo { margin: -23px; }
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  margin: 0;
+  color: black;
+  height: 250px;
+  width: 250px;
+}
+.logo .logo-svg {
+  height: 100%;
+  width: 100%;
+  stroke: black;
+  cursor: pointer;
+}
+.logo .logo-text {
+  position: absolute;
+  top: 58%;
+  right: 16%;
+  cursor: pointer;
+  font-family: 'Montserrat';
+  font-size: 55px;
+  letter-spacing: 0px;
+  font-weight: 400;
+  line-height: 66px;
+}
+
+.social {
+  padding-left: 60px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.social:before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 10px;
+  height: 35px;
+  width: 35px;
+  background-size: cover !important;
+}
+
+.side-header {
+  font-family: 'Open Sans';
+  font-size: 18px;
+  letter-spacing: 4px;
+  font-weight: 600;
+  line-height: 28px;
+  margin: 60px auto 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #888;
+  display: inline-block;
+  background: #333f3f33;
+  color: white;
+  padding: 6px 12px;
+  clip-path: polygon(
+    0 0,
+    90% 0,
+    100% 20%,
+    100% 100%,
+    20% 100%,
+    0 100%
+  );
+}
+
+.list-thing {
+  padding-left: 25px;
+  margin-bottom: 10px;
+}
+
+/* ========== CONTENUTO ========== */
+.content-container {
+  margin-right: 0;
+  width: calc(95% - 350px);
+  padding: 20px 40px 20px;
+}
+.content-container > * { margin: 0 auto 25px; }
+.content-container > h3 { margin: 0 auto 5px; }
+.content-container > p.long-margin { margin: 0 auto 50px; }
+
+.title { width: 80%; text-align: center; }
+.separator { width: 240px; height: 2px; background-color: #999; }
+
+.greyed {
+  background-color: #DDD;
+  width: 100%;
+  max-width: 580px;
+  text-align: center;
+  font-family: 'Open Sans';
+  font-size: 18px;
+  letter-spacing: 6px;
+  font-weight: 600;
+  line-height: 28px;
+  margin-top: 41px;
+  clip-path: polygon(
+    0 0,
+    98% 0,
+    100% 30%,
+    100% 100%,
+    20% 100%,
+    0 100%
+  );
+}
+
+@media screen and (max-width: 1150px) {
+  .name {
+    color: white;
+    font-family: 'Raleway';
+    font-size: 38px;
+    letter-spacing: 6px;
+    font-weight: 100;
+    line-height: 48px;
+  }
+}
+
+/* ========== LINK & ANIMAZIONI ========== */
+a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover { color: #555; }
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.2s ease-in-out forwards;
+}
+@keyframes fadeIn { to { opacity: 1; } }
+
+.slide-in-left {
+  transform: translateX(-30px);
+  opacity: 0;
+  animation: slideInLeft 1s ease-out forwards;
+}
+@keyframes slideInLeft {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.rela-block.list-thing {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.rela-block.list-thing:hover {
+  transform: translateX(5px);
+  color: #333;
+}
+
+/* ========== RESPONSIVE ========== */
+@media screen and (max-width: 768px) {
+  .page {
+    width: 95%;
+    margin: 40px auto;
+    box-shadow: none;
+  }
+
+  .top-bar { height: 150px; }
+
+  .name {
+    position: static;
+    font-size: 32px;
+    letter-spacing: 4px;
+    height: auto;
+    line-height: 1.2;
+    padding: 20px 0;
+  }
+
+  .side-bar {
+    position: static;
+    width: 100%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+  }
+
+  .mugshot {
+    position: static;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    height: auto;  /* permette allo SVG di ridimensionarsi */
+    width: auto;
+  }
+
+  .content-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  h2, h3 { font-size: 20px; }
+
+  .rela-block.list-thing { padding-left: 10px; }
+
+  .greyed {
+    font-size: 16px;
+    letter-spacing: 3px;
+    max-width: 100%;
+    margin-top: 30px;
+  }
+
+  .abs-center {
+    transform: none;
+    position: static;
+  }
+
+  .rela-block.page.fade-in {
+    animation: fadeIn 0.8s ease-in-out forwards;
+  }
+}
+
+i.fa-xl { margin-right: 8px; }
+
+@media print {
+  body { background: white !important; }
+  .side-bar { page-break-inside: avoid; }
+  a { color: black; text-decoration: underline; }
+}
+
+/* ========== RITOCCHI MINIMI PER LA FOTO ESAGONALE ========== */
+/* Se usi l'SVG esagonale nella .mugshot, rendiamolo un filo più reattivo */
+@media (min-width: 1200px){
+  .mugshot svg{ width: 220px; height: 220px; }
+}
+@media (max-width: 768px){
+  .mugshot svg{ width: 160px; height: 160px; }
+}

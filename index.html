@@ -1,23 +1,183 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CV — Andrea Buda · Dark Modern</title>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css"/>
+  <link rel="stylesheet" href="./style.css" />
+
+  <style>
+    .timeline {
+      position: relative;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 0 20px 18px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .timeline-item.left {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-item.right {
+      left: 50%;
+      text-align: left;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent, #00ffc3);
+    }
+
+    .timeline-item.left::before {
+      right: -5px;
+    }
+
+    .timeline-item.right::before {
+      left: -5px;
+    }
+
+    .timeline-item-header {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.03);
+      cursor: pointer;
+    }
+
+    .timeline-date {
+      font-weight: 600;
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
+
+    .timeline-type {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.7;
+    }
+
+    .timeline-title {
+      font-weight: 600;
+    }
+
+    .timeline-toggle {
+      margin-left: auto;
+      font-weight: 700;
+      color: var(--accent, #00ffc3);
+    }
+
+    .timeline-detail {
+      display: none;
+      margin-top: 4px;
+      padding: 0 4px;
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    .timeline-mobile {
+      display: none;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .timeline-mobile-item {
+      position: relative;
+      padding: 0 0 12px 14px;
+      margin-bottom: 10px;
+      border-left: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .timeline-mobile-item::before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: -5px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent, #00ffc3);
+    }
+
+    .timeline-mobile-date {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .timeline-mobile-type {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.75;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .timeline-mobile-title {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .timeline-mobile-text {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        display: none;
+      }
+
+      .timeline-mobile {
+        display: block;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  
+
   <div class="sheet">
 
-    <!-- COLONNA NUMERI (auto) -->
     <div class="line-numbers" aria-hidden="true"></div>
 
-    <!-- CONTENUTO -->
     <div class="content">
 
-      <!-- HEADER (card) -->
       <header class="header card">
         <h1>&lt;CV&gt;</h1>
         <h2>
@@ -32,60 +192,185 @@
           <a href="https://www.instagram.com/slhtattooer/" target="_blank">Instagram</a> /
           <a href="https://www.facebook.com/Andrea.SLH.tattoo" target="_blank">Facebook</a>
         </p>
+        <p class="portfolio-callout">
+          <a class="portfolio-link" href="https://www.slhtattooer.it/Portfolio/" target="_blank"
+            rel="noopener">Portfolio online</a>
+        </p>
         <p class="location">Caselle Torinese (TO)</p>
       </header>
 
-      <!-- GRID DUE COLONNE (card + card) -->
       <main class="grid">
 
         <!-- SINISTRA -->
         <section class="col col-left card">
 
-          <!-- SUMMARY -->
           <h3 class="section-title"><span class="slash">/</span>summary <span class="brace">{</span></h3>
-          <p class="indent quote">"Creativo classe 1987 con oltre 15 anni di esperienza in illustrazione e progettazione, arricchita da una solida base informatica e competenze in sviluppo software. Unisco arte, codice e pensiero visivo per realizzare soluzioni digitali funzionali e creative. Affidabile, collaborativo e flessibile nel lavoro individuale e di gruppo."</p>
+          <p class="indent quote">"Creativo classe 1987 con oltre 15 anni di esperienza in illustrazione e
+            progettazione, arricchita da una solida base informatica e competenze in sviluppo software. Unisco arte,
+            codice e pensiero visivo per realizzare soluzioni digitali funzionali e creative. Affidabile, collaborativo
+            e flessibile nel lavoro individuale e di gruppo."</p>
           <p class="brace">}</p>
 
           <div class="gap"></div>
 
-          <!-- WORK EXPERIENCE -->
-          <h3 class="section-title"><span class="slash">/</span>work_experience <span class="brace">{</span></h3>
+          <h3 class="section-title"><span class="slash">/</span>Esperienze <span class="brace">{</span></h3>
 
-          <p class="indent job-title hover-soft">Inker's Club <span class="paren">()</span> <span class="brace">{</span></p>
-          <p class="indent2 quote">"Gestione di progetti creativi personalizzati, focus su problem solving e relazione col cliente. Attivo nella promozione dell’attività tramite strategie digitali e social media."</p>
-          <p class="indent brace">}</p>
+          <!-- TIMELINE DESKTOP -->
+          <div class="timeline">
 
-          <p class="indent job-title hover-soft">Temperino Marketing &amp; Multimedia <span class="paren">()</span> <span class="brace">{</span></p>
-          <p class="indent2 quote">"Gestione di siti web, creazione materiali promozionali, collaborazione con team creativi e clienti, e supervisione del design."</p>
-          <p class="indent brace">}</p>
+            <div class="timeline-line"></div>
 
-          <p class="brace">}</p>
+            <div class="timeline-item left">
+              <div class="timeline-item-header">
+                <span class="timeline-date">2025</span>
+                <span class="timeline-type">Formazione</span>
+                <span class="timeline-title">Assocam Scuola Camerana · Tecnico sviluppo software</span>
+                <span class="timeline-toggle">+</span>
+              </div>
+              <div class="timeline-detail">
+                Corso pratico di 300 ore su Python, JavaScript, HTML e SQL; uso di IDE, versionamento con Git e basi di
+                analisi tecnica.
+              </div>
+            </div>
 
-          <div class="gap"></div>
+            <div class="timeline-item right">
+              <div class="timeline-item-header">
+                <span class="timeline-date">2014 – oggi</span>
+                <span class="timeline-type">Lavoro</span>
+                <span class="timeline-title">Graphic &amp; Web Designer freelance</span>
+                <span class="timeline-toggle">+</span>
+              </div>
+              <div class="timeline-detail">
+                Progettazione di siti web vetrina e portfolio, loghi e identità visive, grafiche per social e materiali
+                di comunicazione su misura per piccoli brand, musicisti e attività locali.
+              </div>
+            </div>
 
-          <!-- EDUCATION -->
-          <h3 class="section-title"><span class="slash">/</span>education <span class="brace">{</span}</h3>
+            <div class="timeline-item left">
+              <div class="timeline-item-header">
+                <span class="timeline-date">2012 – oggi</span>
+                <span class="timeline-type">Lavoro</span>
+                <span class="timeline-title">Tatuatore professionista</span>
+                <span class="timeline-toggle">+</span>
+              </div>
+              <div class="timeline-detail">
+                Percorso continuativo come tatuatore resident e collaboratore in diversi studi:
+                <br>- Happy Family Tattoo (2012–2018)
+                <br>- Tattoo Society, Bra – Proprietario e tatuatore (2017–2019)
+                <br>- Veracruz Tattoo – Tatuatore resident (2019–2024)
+                <br>- Inker's Club – Collaborazione attuale (dal 2024)
+                <br><br>Progettazione di tatuaggi personalizzati, gestione e fidelizzazione della clientela,
+                partecipazione a convention nazionali e internazionali.
+              </div>
+            </div>
 
-          <p class="indent edu-title hover-soft">
-            Tecnico sviluppo software <span class="brace">{</span><br>
-            <span class="paren indent">(Assocam Scuola Camerana)</span>
-          </p>
-          <p class="indent2 quote">"Corso pratico di 300 ore su Python, JavaScript, HTML, SQL; uso di IDE, versionamento con Git, analisi tecnica e personalizzazione software."</p>
-          <p class="indent brace">}</p>
+            <div class="timeline-item right">
+              <div class="timeline-item-header">
+                <span class="timeline-date">2015 – 2017</span>
+                <span class="timeline-type">Formazione</span>
+                <span class="timeline-title">Scuola Internazionale di Comics · Specializzazione in Illustrazione</span>
+                <span class="timeline-toggle">+</span>
+              </div>
+              <div class="timeline-detail">
+                Percorso di 600 ore su progettazione visiva e tecniche tradizionali/digitali. Sviluppo di stile
+                personale e progetti editoriali professionali.
+              </div>
+            </div>
 
-          <p class="indent edu-title hover-soft">
-            Specializzazione professionale in Illustrazione <span class="brace">{</span><br>
-            <span class="paren indent">(Scuola Internazionale di Comics)</span>
-          </p>
-          <p class="indent2 quote">"Percorso di 600 ore su progettazione visiva e tecniche tradizionali/digitali. Sviluppo di stile personale e progetti editoriali professionali."</p>
-          <p class="indent brace">}</p>
+            <div class="timeline-item left">
+              <div class="timeline-item-header">
+                <span class="timeline-date">2008 – 2010</span>
+                <span class="timeline-type">Lavoro</span>
+                <span class="timeline-title">Temperino Marketing &amp; Multimedia · Designer</span>
+                <span class="timeline-toggle">+</span>
+              </div>
+              <div class="timeline-detail">
+                Gestione siti web, grafica per web e stampa, creazione di materiali promozionali e collaborazione con
+                team creativi e clienti.
+              </div>
+            </div>
 
-          <p class="indent edu-title hover-soft">
-            Diploma Perito Informatico — Progetto ABACUS <span class="brace">{</span><br>
-            <span class="paren indent">(ITIS Giuseppe Peano)</span>
-          </p>
-          <p class="indent2 quote">"Formazione quinquennale su programmazione, reti, sistemi e basi di dati."</p>
-          <p class="indent brace">}</p>
+            <div class="timeline-item right">
+              <div class="timeline-item-header">
+                <span class="timeline-date">2001 – 2006</span>
+                <span class="timeline-type">Formazione</span>
+                <span class="timeline-title">ITIS Giuseppe Peano · Diploma Perito Informatico</span>
+                <span class="timeline-toggle">+</span>
+              </div>
+              <div class="timeline-detail">
+                Formazione quinquennale su programmazione, reti, sistemi e basi di dati, con forte impronta tecnica e
+                logica.
+              </div>
+            </div>
+
+          </div>
+
+          <!-- TIMELINE MOBILE -->
+          <div class="timeline-mobile">
+
+            <div class="timeline-mobile-item">
+              <span class="timeline-mobile-date">2025</span>
+              <span class="timeline-mobile-type">Formazione</span>
+              <span class="timeline-mobile-title">Assocam Scuola Camerana · Tecnico sviluppo software</span>
+              <span class="timeline-mobile-text">
+                Corso pratico di 300 ore su Python, JavaScript, HTML e SQL; uso di IDE, versionamento con Git e basi di
+                analisi tecnica.
+              </span>
+            </div>
+
+            <div class="timeline-mobile-item">
+              <span class="timeline-mobile-date">2014 – oggi</span>
+              <span class="timeline-mobile-type">Lavoro</span>
+              <span class="timeline-mobile-title">Graphic &amp; Web Designer freelance</span>
+              <span class="timeline-mobile-text">
+                Progettazione di siti web vetrina e portfolio, loghi e identità visive, grafiche per social e materiali
+                di comunicazione su misura per piccoli brand, musicisti e attività locali.
+              </span>
+            </div>
+
+            <div class="timeline-mobile-item">
+              <span class="timeline-mobile-date">2012 – oggi</span>
+              <span class="timeline-mobile-type">Lavoro</span>
+              <span class="timeline-mobile-title">Tatuatore professionista</span>
+              <span class="timeline-mobile-text">
+                Percorso continuativo come tatuatore resident e collaboratore in diversi studi (Happy Family Tattoo,
+                Tattoo Society, Veracruz Tattoo, Inker's Club), con focus su tatuaggi personalizzati, gestione e
+                fidelizzazione della clientela e partecipazione a convention nazionali e internazionali.
+              </span>
+            </div>
+
+            <div class="timeline-mobile-item">
+              <span class="timeline-mobile-date">2015 – 2017</span>
+              <span class="timeline-mobile-type">Formazione</span>
+              <span class="timeline-mobile-title">Scuola Internazionale di Comics · Specializzazione in
+                Illustrazione</span>
+              <span class="timeline-mobile-text">
+                Percorso di 600 ore su progettazione visiva e tecniche tradizionali/digitali. Sviluppo di stile
+                personale e progetti editoriali professionali.
+              </span>
+            </div>
+
+            <div class="timeline-mobile-item">
+              <span class="timeline-mobile-date">2008 – 2010</span>
+              <span class="timeline-mobile-type">Lavoro</span>
+              <span class="timeline-mobile-title">Temperino Marketing &amp; Multimedia · Designer</span>
+              <span class="timeline-mobile-text">
+                Gestione siti web, grafica per web e stampa, creazione di materiali promozionali e collaborazione con
+                team creativi e clienti.
+              </span>
+            </div>
+
+            <div class="timeline-mobile-item">
+              <span class="timeline-mobile-date">2001 – 2006</span>
+              <span class="timeline-mobile-type">Formazione</span>
+              <span class="timeline-mobile-title">ITIS Giuseppe Peano · Diploma Perito Informatico</span>
+              <span class="timeline-mobile-text">
+                Formazione quinquennale su programmazione, reti, sistemi e basi di dati, con forte impronta tecnica e
+                logica.
+              </span>
+            </div>
+
+          </div>
 
           <p class="brace">}</p>
         </section>
@@ -128,86 +413,81 @@
         </aside>
       </main>
 
-      <!-- STATUS BAR -->
       <footer class="statusbar card">
         <div class="status-left">
           <span class="visits-label">visite:</span> <span id="visit-count">—</span>
         </div>
         <div class="status-right">© Andrea Buda</div>
       </footer>
+
+      <p class="privacy-gdpr">
+        Autorizzo il trattamento dei miei dati personali ai sensi del Regolamento (UE) 2016/679 (GDPR)
+        per le sole finalità di selezione e gestione del personale.
+      </p>
     </div>
   </div>
 
-  <!-- AUTONUMERAZIONE + VISIT COUNTER -->
- <script>
-    (function(){
-    // ===== Autonumerazione colonna sinistra (senza observer) =====
-    const lineBox = document.querySelector('.line-numbers');
-    const content = document.querySelector('.content');
-    if (!lineBox || !content) return;
+  <script>
+    (function () {
+      const lineBox = document.querySelector('.line-numbers');
+      const content = document.querySelector('.content');
+      if (!lineBox || !content) return;
 
-    let lastCount = -1;
-    let running = false;
+      let lastCount = -1;
+      let running = false;
 
-    function getLineHeight(){
+      function getLineHeight() {
         const v = getComputedStyle(document.documentElement).getPropertyValue('--lh').trim();
         const n = parseFloat(v);
         return Number.isFinite(n) && n > 0 ? n : 28;
-    }
+      }
 
-    function renderLines(){
-        if (running) return;          // lock anti-loop
-        if (getComputedStyle(lineBox).display === 'none') return; // mobile: hidden
+      function renderLines() {
+        if (running) return;
+        if (getComputedStyle(lineBox).display === 'none') return;
         running = true;
 
         const lh = getLineHeight();
-        const h  = content.getBoundingClientRect().height; // stabile, no layout thrash
+        const h = content.getBoundingClientRect().height;
         let total = Math.ceil(h / lh);
         if (!Number.isFinite(total) || total < 1) total = 1;
-        // safety cap per evitare runaway in casi limite
         if (total > 5000) total = 5000;
 
-        if (total !== lastCount){
-        const frag = document.createDocumentFragment();
-        for (let i = 1; i <= total; i++){
+        if (total !== lastCount) {
+          const frag = document.createDocumentFragment();
+          for (let i = 1; i <= total; i++) {
             const s = document.createElement('span');
             s.textContent = String(i).padStart(2, '0');
             frag.appendChild(s);
-        }
-        lineBox.replaceChildren(frag);
-        lastCount = total;
+          }
+          lineBox.replaceChildren(frag);
+          lastCount = total;
         }
         running = false;
-    }
+      }
 
-    // run on load + DOM ready
-    window.addEventListener('load', renderLines);
-    document.addEventListener('DOMContentLoaded', renderLines);
+      window.addEventListener('load', renderLines);
+      document.addEventListener('DOMContentLoaded', renderLines);
 
-    // run when font finishes loading (cambia altezze una volta)
-    if (document.fonts && document.fonts.ready){
+      if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(() => setTimeout(renderLines, 0));
-    }
+      }
 
-    // debounced resize / orientation change
-    let t;
-    function queueRender(){
+      let t;
+      function queueRender() {
         clearTimeout(t);
         t = setTimeout(renderLines, 120);
-    }
-    window.addEventListener('resize', queueRender);
-    window.addEventListener('orientationchange', queueRender);
+      }
+      window.addEventListener('resize', queueRender);
+      window.addEventListener('orientationchange', queueRender);
 
-    // fallback: ricalcola una volta a idle (dopo eventuali animazioni iniziali)
-    if ('requestIdleCallback' in window){
+      if ('requestIdleCallback' in window) {
         requestIdleCallback(renderLines, { timeout: 500 });
-    } else {
+      } else {
         setTimeout(renderLines, 200);
-    }
+      }
 
-    // ===== Visit counter (per-browser) =====
-   // ===== Visit counter assoluto (server JSON) =====
-      (function(){
+      (function () {
         const el = document.getElementById('visit-count');
         if (!el) return;
         fetch('./counter.php', { cache: 'no-store' })
@@ -220,7 +500,21 @@
       })();
 
     })();
-    </script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".timeline-item-header").forEach(header => {
+        header.addEventListener("click", () => {
+          const detail = header.nextElementSibling;
+          if (!detail) return;
+          const isOpen = detail.style.display === "block";
+          detail.style.display = isOpen ? "none" : "block";
+          const icon = header.querySelector(".timeline-toggle");
+          if (icon) icon.textContent = isOpen ? "+" : "−";
+        });
+      });
+    });
+  </script>
 
 </body>
+
 </html>
